@@ -1,0 +1,47 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+    <section class="bg-primary">
+            <div class="container">
+                <div class="page-title text-white text-center">
+                    <h2 data-animate="fadeInUp" data-delay="1.2">Liste Des Articles</h2>
+                    <ul class="list-inline" data-animate="fadeInUp" data-delay="1.4">
+                        <li>
+                            <a href="{{ path('home') }}"><i class="fa fa-home"></i>Accueil</a>
+                        </li>
+                        <li>/</li>
+                        <li>
+                            <a href="#">Liste Des Articles</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    </section>
+    <section class="pt-120 pb-120">
+        <div class="container">
+            <div class="blog">
+                <div class="row isotope">
+                    {% for article in all_article %}
+                        <div class="col-md-6">
+                            <div class="single-latest-news" data-animate="fadeInUp" data-delay=".1"> 
+                                <a href="{{ path('article-show',{id:article.id}) }}"> <img id="test" src="{{ vich_uploader_asset(article) }}" alt="{{ article.titre }}"> </a>
+                                <ul class="post-details list-inline">
+                                    <li><i class="fa fa-calendar-o"></i><a href="#">Créer le {{ article.createdAt|date('d/m/Y') }}</a></li>
+                                    <li><i class="fa fa-eye"></i><a href="{{ path('article-show',{'id': article.id}) }}">Afficher</a></li>
+                                    <li><i class="fa fa-edit"></i><a href="{{ path('article-edit',{'id': article.id}) }}">Modifier</a></li>
+                                    <li><i class="fa fa-trash"></i><a href="#" onclick="event.preventDefault(); confirm('Etes vous sûre ???') && document.getElementById('delete-article').submit();">Supprimer</a></li>
+                                        <form id="delete-article" action="{{ path('article-delete',{'id': article.id}) }}" method="post" style="display: none;">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                        </form>
+                                </ul>
+                                <h2><a href="{{ path('article-show',{id:article.id}) }}">{{ article.titre}}</a></h2>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

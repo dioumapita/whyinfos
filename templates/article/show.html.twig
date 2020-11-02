@@ -1,0 +1,49 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}{{ article.titre }}{% endblock %}
+
+{% block body %}
+
+    <section class="bg-primary">
+            <div class="container">
+                <div class="page-title text-white text-center">
+                    <h2 data-animate="fadeInUp" data-delay="1.2">Détail Article</h2>
+                    <ul class="list-inline" data-animate="fadeInUp" data-delay="1.4">
+                        <li>
+                            <a href="{{ path('home') }}"><i class="fa fa-home"></i>Accueil</a>
+                        </li>
+                        <li>/</li>
+                        <li>
+                            <a href="#">Détail Article</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    </section>
+    <section class="pt-120 pb-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <img id="test3" src="{{ vich_uploader_asset(article) }}" alt="{{ article.titre }}" data-animate="fadeInUp" data-delay=".1" width="900px" height="500px">
+                            <ul class="post-details list-inline" data-animate="fadeInUp" data-delay=".1">
+                                <li><i class="fa fa-calendar-o"></i><a href="#">Créer le {{ article.createdAt|date('d/m/Y') }}</a></li>
+                                <li><i class="fa fa-folder-open-o"></i><a href="#">Hosting</a></li>
+                            </ul>
+                            <div class="single-post-content">
+                                <h1 data-animate="fadeInUp" data-delay=".1">
+                                    {{ article.titre }}
+                                </h1>
+                                <p data-animate="fadeInUp" data-delay=".1">
+                                   {{ article.description }}
+                                </p>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                            </div>
+        </div>
+    </section>
+
+{% endblock %}

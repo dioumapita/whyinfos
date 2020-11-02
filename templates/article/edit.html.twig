@@ -1,0 +1,33 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}edit-article-{{ article.id }}{% endblock %}
+
+{% block body %}
+        <section class="bg-primary">
+            <div class="container">
+                <div class="page-title text-white text-center">
+                    <h2 data-animate="fadeInUp" data-delay="1.2">Modification D'un Article</h2>
+                    <ul class="list-inline" data-animate="fadeInUp" data-delay="1.4">
+                        <li>
+                            <a href="{{ path('home') }}"><i class="fa fa-home"></i>Accueil</a>
+                        </li>
+                        <li>/</li>
+                        <li>
+                            <a href="#">Modification D'un Article</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <h1>Modification de l'article {{ article.id }}</h1>
+        
+                {{ form_start(my_form) }}
+                    {{ form_widget(my_form) }}
+                        <input type="submit" value="Modifier" class="btn btn-info btn-block">
+                {{ form_end(my_form) }}
+            </div>
+        </div>
+
+{% endblock %}

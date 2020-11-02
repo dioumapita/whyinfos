@@ -1,0 +1,33 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}create-article{% endblock %}
+
+{% block body %}
+        <section class="bg-primary">
+            <div class="container">
+                <div class="page-title text-white text-center">
+                    <h2 data-animate="fadeInUp" data-delay="1.2">Création D'article</h2>
+                    <ul class="list-inline" data-animate="fadeInUp" data-delay="1.4">
+                        <li>
+                            <a href="{{ path('home') }}"><i class="fa fa-home"></i>Accueil</a>
+                        </li>
+                        <li>/</li>
+                        <li>
+                            <a href="#">Création D'article</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <h1>Création D'article</h1>
+        
+                {{ form_start(my_form) }}
+                    {{ form_widget(my_form) }}
+                        <input type="submit" value="Créer un article" class="btn btn-info btn-block">
+                {{ form_end(my_form) }}
+            </div>
+        </div>
+
+{% endblock %}
